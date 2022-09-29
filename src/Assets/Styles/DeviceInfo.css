@@ -1,0 +1,25 @@
+.device-info {
+    padding: 0.8rem;
+    display: block;
+    position: absolute;
+    right: 1vw;
+    bottom: 20px;
+    background-color: #3c3f41;
+    border-radius: 5px;
+    color: #fbfbfb;
+    opacity: 0.7;
+}
+
+.device-info:hover {
+    opacity: 1.0;
+}
+
+.device-info-link {
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+}
+
+.device-info-exec {
+    padding-top: 0.1rem;
+    padding-bottom: 0.8rem;
+}

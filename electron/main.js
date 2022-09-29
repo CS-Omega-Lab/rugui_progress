@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu, ipcMain, dialog,remote} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -11,42 +11,37 @@ const main_menu = [
                 label: 'Выход'
             },
             { role: 'toggleDevTools' },
-            {type: 'separator'},
-            {
-                label: 'Переподключиться',
-                click: async () => {
-                    console.log('[server] Reconnecting...')
-                }
-            }
+            {type: 'separator'}
         ]
     }
 ]
 
 app.disableHardwareAcceleration()
 app.whenReady().then(() => {
-    win = new BrowserWindow({
-        width: 1280,
-        height: 720,
+    let win = new BrowserWindow({
         show: false,
         useContentSize: true,
-        resizable: false,
-        maximizable: false,
-        title: 'Explora v2',
+        minimizable: false,
+        title: 'Progress GUI',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
             webSecurity: false
         },
-        icon:'assets/img/logo.png'
+        icon: 'Assets/img/logo.png'
     })
     const startUrl = process.env.ELECTRON_START_URL || url.format({
         pathname: path.join(__dirname, '../index.html'),
         protocol: 'file:',
         slashes: true
     });
-    win.loadURL(startUrl);
-    win.webContents.setFrameRate(60)
-    win.show()
+    win.loadURL(startUrl).then(r => {
+        console.log(r)
+        win.webContents.setFrameRate(60)
+        win.maximize()
+        win.show()
+    });
+
 })
 
 const menu = Menu.buildFromTemplate(main_menu)

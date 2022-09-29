@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    height: 5vh;
+    width: 100vw;
+    background-color: #e9eaea;
+}
+
+.navbar-brand {
+    height: 10vh;
+}
+
+.logo-img {
+    height: 5vh;
+    width: 10vw;
+    margin-left: 0.2rem;
+    margin-top: 0.1rem;
+}
+
+.header-caption {
+    font-size: 1.7rem;
+    padding: 0.5rem;
+}

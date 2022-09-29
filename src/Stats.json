@@ -2,18 +2,14 @@
   "battery": 44,
   "battery_status": "charging",
   "battery_voltage": 4.2,
-
   "left_speed": 10,
   "right_speed": 90,
-
   "x_position": 700,
   "y_position": 200,
   "theta": 110,
   "x_max": 1000,
   "y_max": 1000,
-
   "status": "active",
-
   "left_fin": 90,
   "right_fin": 170
 }

@@ -1,0 +1,10 @@
+.charge-level {
+    position: relative;
+    top: -10%;
+}
+
+.charge-level-caption {
+    position: relative;
+    top: -45%;
+    left: 2%;
+}

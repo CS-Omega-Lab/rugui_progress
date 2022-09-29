@@ -1,0 +1,34 @@
+:root {
+    --x-pos: 0%;
+    --y-pos: 0%;
+    --angle: 0deg;
+}
+
+.grid_map {
+    position: relative;
+    width: 90%;
+    height: 95vh;
+    background: url("../Img/border.png");
+    background-size: contain;
+}
+
+.map {
+    height: 95vh;
+    width: initial;
+    background-color: #c7c7c7;
+    border-right: 5px solid #fd9b49;
+}
+
+.robot_xy {
+    position: absolute;
+    color: #00FF00;
+    top: var(--y-pos);
+    left: var(--x-pos);;
+    transform: rotate(var(--angle));
+}
+
+.robot_position {
+    text-align: center;
+    position: relative;
+    color: #DDDDDD;
+}

@@ -1,9 +1,9 @@
 {
-  "name": "explora_v2",
+  "name": "progress_gui",
   "version": "0.1.0",
   "private": true,
   "main": "electron/main.js",
-  "productName": "Explora v2",
+  "productName": "Progress GUI",
   "author": {
     "name": "Акжигитов Артём",
     "email": "info@hxps.ru",
@@ -22,14 +22,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set BROWSER=none && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "electron .",
     "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
-    "build-electron": "mkdir build/electron && robocopy electron build/electron /S",
-    "package": "electron-builder build --mac --win -c.extraMetadata.main=build/electron/main.js --publish never"
+    "build-electron": "mkdir build\\electron && robocopy electron build\\electron /S",
+    "package": "electron-builder build --mac --win -c.extraMetadata.main=build\\electron\\main.js --publish never"
   },
   "eslintConfig": {
     "extends": [

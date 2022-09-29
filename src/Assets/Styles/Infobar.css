@@ -1,0 +1,9 @@
+.infobar {
+    display: flex;
+    flex-direction: column;
+    width: 11vw;
+    max-width: 11vw;
+    height: 95vh;
+    padding: 1rem;
+    background-color: #e9eaea;
+}
