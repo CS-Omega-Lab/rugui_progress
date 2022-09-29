@@ -23,14 +23,14 @@ class DeviceInfo extends Component {
         let button_stateDerived
         let button_textDerived
 
-        if (nextProps.info.link_ok === 1) {
+        if (nextProps.info.link_ok) {
             connectedDerived = "подключено"
             button_stateDerived = false
         } else {
             connectedDerived = "не подключено"
             button_stateDerived = true
         }
-        if (nextProps.info.executing === 1) {
+        if (nextProps.info.executing) {
             executingDerived = "выполняется"
             button_textDerived = "Стоп"
         } else {
@@ -47,8 +47,8 @@ class DeviceInfo extends Component {
     }
 
     handleClick(e) {
-        //this.props.onSwitchExec()
-        console.log("onSwitch")
+        this.props.handler(e.target.value);
+        console.log("onSwitch: comp")
     }
 
 
