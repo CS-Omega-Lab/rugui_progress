@@ -11,16 +11,12 @@
   },
   "homepage": "./",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-minimal-pie-chart": "^8.3.0",
     "react-scripts": "5.0.1",
-    "sweetalert2": "^11.4.35",
-    "web-vitals": "^2.1.4"
+    "sweetalert2": "^11.4.35"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,7 +26,7 @@
     "electron": "electron .",
     "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "build-electron": "mkdir build\\electron && robocopy electron build\\electron /S",
-    "package": "electron-builder build --mac --win -c.extraMetadata.main=build\\electron\\main.js --publish never"
+    "package": "electron-builder build --win -c.extraMetadata.main=build\\electron\\main.js --publish never"
   },
   "eslintConfig": {
     "extends": [
@@ -61,8 +57,12 @@
     ],
     "publish": {
       "provider": "github",
-      "repo": "electron-cra-example",
-      "owner": "johndyer24"
+      "repo": "progress_gui",
+      "owner": "Hexerpowers"
+    },
+    "win": {
+      "target": "msi",
+      "icon": "build/logo512.png"
     }
   }
 }

@@ -29,9 +29,9 @@ class App extends Component {
                 executing: false,
             },
             devicePosition: {
-                x_position: 1600,
-                y_position: 220,
-                theta: 90,
+                x_position: 0,
+                y_position: 0,
+                theta: 0,
                 x_max: 3000,
                 y_max: 2000
             },
@@ -39,7 +39,7 @@ class App extends Component {
         this.host_check = true
         this.base_url = "http://127.0.0.1:5000/api/v1.0/"
 
-        setTimeout(() =>setInterval(this.updateData,500), 2000)
+        setTimeout(() =>setInterval(this.updateData,200), 2000)
     }
 
     handleSwitch(){
@@ -55,40 +55,54 @@ class App extends Component {
     }
 
     componentDidMount() {
-        if (this.host_check){
-            let response = fetch(this.base_url+"check").then(response => {
-                this.host_check = false
-                if(!response.ok){
+        Swal.fire({
+            title: 'Подключиться к удалённому хосту?',
+            showDenyButton: true,
+            confirmButtonText: 'Да',
+            denyButtonText: `Оставить локальный`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.base_url = "http://rpi.local:5000/api/v1.0/"
+            } else if (result.isDenied) {
+                this.base_url = "http://localhost:5000/api/v1.0/"
+            }
+            if (this.host_check){
+                let response = fetch(this.base_url+"check").then(response => {
+                    this.host_check = false
+                    if(!response.ok){
+                        Swal.fire({
+                            title: 'OmegaRIG не в сети',
+                            text: 'Подключите OmegaRIG и компьютер к одной локальной сети, затем перезапустите приложение',
+                            icon: 'error',
+                            confirmButtonText: 'Ок'
+                        })
+                    }else{
+                        let tDI = this.state.deviceInfo
+                        tDI['link_ok'] = true
+                        this.setState({deviceInfo: tDI})
+                        Swal.fire({
+                            title: 'OmegaRIG в сети',
+                            text: 'Соединение установлено',
+                            icon: 'success',
+                            confirmButtonText: 'Ок'
+                        })
+                    }
+                    return response.json()
+                }).then(data => {
+                    console.log(data)
+                }).catch(err => {
+                    this.host_check = false
                     Swal.fire({
                         title: 'OmegaRIG не в сети',
                         text: 'Подключите OmegaRIG и компьютер к одной локальной сети, затем перезапустите приложение',
                         icon: 'error',
                         confirmButtonText: 'Ок'
                     })
-                }else{
-                    let tDI = this.state.deviceInfo
-                    tDI['link_ok'] = true
-                    this.setState({deviceInfo: tDI})
-                    Swal.fire({
-                        title: 'OmegaRIG в сети',
-                        text: 'Соединение установлено',
-                        icon: 'success',
-                        confirmButtonText: 'Ок'
-                    })
-                }
-                return response.json()
-            }).then(data => {
-                console.log(data)
-            }).catch(err => {
-                this.host_check = false
-                Swal.fire({
-                    title: 'OmegaRIG не в сети',
-                    text: 'Подключите OmegaRIG и компьютер к одной локальной сети, затем перезапустите приложение',
-                    icon: 'error',
-                    confirmButtonText: 'Ок'
                 })
-            })
-        }
+            }
+        })
+
+
     }
 
     updateData(){

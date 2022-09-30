@@ -45,7 +45,7 @@ app.whenReady().then(() => {
 })
 
 const menu = Menu.buildFromTemplate(main_menu)
-Menu.setApplicationMenu(menu)
+Menu.setApplicationMenu(null)
 
 app.on('window-all-closed', () => {
     app.quit()
