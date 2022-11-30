@@ -62,7 +62,7 @@ class App extends Component {
             denyButtonText: `Оставить локальный`,
         }).then((result) => {
             if (result.isConfirmed) {
-                this.base_url = "http://rpi.local:5000/api/v1.0/"
+                this.base_url = "http://raspberrypi.local:5000/api/v1.0/"
             } else if (result.isDenied) {
                 this.base_url = "http://localhost:5000/api/v1.0/"
             }
